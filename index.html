@@ -3,68 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nataly Magazine 💖</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Para Nataly 💖</title>
+
+  <!-- ESTILO EMBEBIDO PARA EVITAR ERRORES -->
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      text-align: center;
+    }
+
+    .pantalla {
+      display: none;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .pantalla.activa {
+      display: flex;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 25px;
+      border: none;
+      background: #ff4d6d;
+      color: white;
+    }
+  </style>
 </head>
 <body>
 
-<!-- CARTA -->
-<section id="carta" class="page active">
-  <div class="card">
-    <h2>💌 Tengo una sorpresa</h2>
+  <!-- CARTA -->
+  <div id="carta" class="pantalla activa">
+    <h2>💌 Tengo una sorpresa para ti</h2>
     <p>Toca para continuar</p>
-    <button id="start">Continuar 💖</button>
+    <button onclick="continuar()">Continuar 💖</button>
   </div>
-</section>
 
-<!-- REVISTA -->
-<section id="revista">
-
-  <!-- PORTADA -->
-  <section class="page portada">
-    <h1>NATALY</h1>
-    <span>Edición Especial · San Valentín</span>
-    <button class="next">Abrir revista ➜</button>
-  </section>
-
-  <!-- PAGINA 1 -->
-  <section class="page">
-    <h2>Nuestra historia</h2>
+  <!-- REVISTA / CONTENIDO -->
+  <div id="revista" class="pantalla">
+    <h1>💖 Feliz San Valentín, Nataly 💖</h1>
     <p>
-      Desde que llegaste a mi vida, la convertiste en lo mejor del mundo.
-      Esta fecha no es solo un día, es el inicio de nuestro viaje de amor.
+      Desde que llegaste a mi vida, la has convertido en lo mejor del mundo.
+      Esta es nuestra pequeña revista de amor.
     </p>
-    <button class="next">Siguiente ➜</button>
-  </section>
+  </div>
 
-  <!-- PAGINA 2 -->
-  <section class="page">
-    <h2>Lo que siento por ti</h2>
-    <p>
-      Te amo más que Snoopy a Charlie Brown, más fiel que Damon Salvatore
-      cuando ama de verdad, y más fuerte que cualquier distancia.
-    </p>
-    <button class="next">Siguiente ➜</button>
-  </section>
+  <!-- JAVASCRIPT EMBEBIDO -->
+  <script>
+    function continuar() {
+      document.getElementById("carta").classList.remove("activa");
+      document.getElementById("revista").classList.add("activa");
+    }
+  </script>
 
-  <!-- PAGINA 3 -->
-  <section class="page">
-    <h2>Nuestra cita 💕</h2>
-    <div class="tickets">
-      <div class="ticket">🎟 Ticket 1<br>Nuestra cita</div>
-      <div class="ticket">🎟 Ticket 2<br>San Valentín</div>
-    </div>
-    <p>
-      Eres una de las mejores cosas que tengo en mi vida
-      y jamás me cansaré de ti. Nunca quiero perderte.
-    </p>
-  </section>
-
-</section>
-
-<script src="script.js"></script>
 </body>
 </html>
+
 
 
 
