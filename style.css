@@ -28,5 +28,12 @@ button {
   background: #ff4d6d;
   color: white;
 }
+.pagina {
+  display: none;
+}
+
+.pagina.activa {
+  display: block;
+}
 
 
