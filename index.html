@@ -4,51 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Para Nataly 💖</title>
-
-  <!-- ESTILO EMBEBIDO PARA EVITAR ERRORES -->
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: white;
-      text-align: center;
-    }
-
-    .pantalla {
-      display: none;
-      min-height: 100vh;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 20px;
-    }
-
-    .pantalla.activa {
-      display: flex;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 12px 25px;
-      font-size: 16px;
-      border-radius: 25px;
-      border: none;
-      background: #ff4d6d;
-      color: white;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- CARTA -->
   <div id="carta" class="pantalla activa">
     <h2>💌 Tengo una sorpresa para ti</h2>
     <p>Toca para continuar</p>
     <button onclick="continuar()">Continuar 💖</button>
   </div>
 
-  <!-- REVISTA / CONTENIDO -->
   <div id="revista" class="pantalla">
     <h1>💖 Feliz San Valentín, Nataly 💖</h1>
     <p>
@@ -57,16 +22,10 @@
     </p>
   </div>
 
-  <!-- JAVASCRIPT EMBEBIDO -->
-  <script>
-    function continuar() {
-      document.getElementById("carta").classList.remove("activa");
-      document.getElementById("revista").classList.add("activa");
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
