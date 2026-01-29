@@ -1,39 +1,104 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #111;
-  color: white;
-  text-align: center;
+  font-family: 'Arial', sans-serif;
+  background: #fff0f5;
+  overflow-x: hidden;
 }
 
-.pantalla {
-  display: none;
-  min-height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 20px;
+/* Carta inicial */
+#carta {
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: #ffe4e1;
+  display: flex; justify-content:center; align-items:center;
+  z-index: 1000;
+}
+.carta-inner {
+  text-align:center;
+}
+.carta-inner button {
+  margin-top:20px;
+  padding: 10px 20px;
+  font-size:16px;
+  cursor:pointer;
 }
 
-.pantalla.activa {
-  display: flex;
+/* Hidden/visible */
+.hidden { display:none; }
+.visible { display:flex; }
+
+/* Corazones flotando */
+.corazones {
+  position:absolute;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  z-index:10;
+}
+.corazones::before, .corazones::after {
+  content:"❤️";
+  position:absolute;
+  font-size:2rem;
+  animation:flotar 6s linear infinite;
+}
+@keyframes flotar {
+  0% { transform: translateY(100vh) translateX(0); opacity:0; }
+  50% { opacity:1; }
+  100% { transform: translateY(-50px) translateX(100px); opacity:0; }
 }
 
-button {
-  margin-top: 20px;
-  padding: 12px 25px;
-  font-size: 16px;
-  border-radius: 25px;
-  border: none;
-  background: #ff4d6d;
-  color: white;
+/* Velas */
+.velas {
+  display:flex;
+  justify-content:center;
+  margin:20px 0;
 }
-.pagina {
-  display: none;
+.vela {
+  width:10px; height:40px;
+  background: orange;
+  margin:0 5px;
+  border-radius:5px;
+  animation:parpadear 1s infinite alternate;
+}
+@keyframes parpadear {
+  0% { background: orange; }
+  100% { background: yellow; }
 }
 
-.pagina.activa {
-  display: block;
+/* Mensaje */
+.mensaje {
+  text-align:center;
+  margin:20px;
+  font-size:18px;
 }
+
+/* Tickets */
+.tickets {
+  display:flex;
+  justify-content:center;
+  margin:20px;
+  gap:20px;
+}
+.ticket {
+  background:#ffccd5;
+  padding:15px;
+  border-radius:10px;
+  text-align:center;
+  width:120px;
+}
+
+/* Carrusel */
+.carrusel {
+  position:relative;
+  max-width:300px;
+  margin: 0 auto;
+}
+.carrusel img {
+  width:100%;
+  display:none;
+}
+.carrusel img.activo { display:block; }
+
 
 
