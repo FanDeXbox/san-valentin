@@ -1,0 +1,48 @@
+/* CARTA */
+.carta {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(#ffb3d9, #ffe6f0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.carta-contenido {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  animation: fadeIn 1.5s ease;
+}
+
+.carta-contenido h1 {
+  color: #b30059;
+}
+
+.carta-contenido button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  background: crimson;
+  color: white;
+  cursor: pointer;
+}
+
+.carta-contenido button:hover {
+  background: #a8003d;
+}
+
+.oculto {
+  display: none;
+}
+
+/* TRANSICIÓN */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}

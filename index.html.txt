@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Nataly 💘</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- CARTA INICIAL -->
+<div id="carta" class="carta">
+  <div class="carta-contenido">
+    <h1>💌 Para Nataly</h1>
+    <p>
+      Te tengo una sorpresa muy especial…<br>
+      hecha con mucho amor solo para ti 💖
+    </p>
+    <button onclick="abrirRevista()">✨ Toca para continuar</button>
+  </div>
+</div>
+
+<!-- REVISTA -->
+<div id="revista" class="revista oculto">
+  <div class="hearts"></div>
+
+  <section class="magazine">
+    <h1 class="edition">Valentine Edition</h1>
+    <p class="date">14 de Febrero</p>
+
+    <h2 class="title">¿Will you be my <span>Valentine</span>?</h2>
+
+    <div class="content">
+      <div class="text">
+        <p>
+          Desde que llegaste a mi vida, la has convertido en lo mejor del mundo,
+          <strong>Nataly Nicoll</strong>.
+        </p>
+
+        <p>
+          Quiero que esta fecha sea solo el inicio de nuestro viaje de amor.
+          Te amo más que Damon Salvatore amó incluso cuando todo estaba en su contra ❤️
+        </p>
+
+        <p>
+          Eres una de las mejores cosas que tengo en mi vida
+          y jamás me cansaré, nunca quiero perderte.
+        </p>
+      </div>
+
+      <div class="photo">
+        <img src="foto1.jpg" alt="Nosotros">
+      </div>
+    </div>
+
+    <h3 class="mission">💌 ¿Aceptas la misión de ser mi San Valentín?</h3>
+
+    <div class="tickets">
+      <div class="ticket">🎟️ Cupón para:<br><strong>Una cita sorpresa</strong></div>
+      <div class="ticket">🎟️ Cupón para:<br><strong>Una ida al cine</strong></div>
+    </div>
+  </section>
+
+  <audio autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
