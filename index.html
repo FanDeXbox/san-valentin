@@ -1,45 +1,202 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para Nataly 💖</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nataly Magazine 💖</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Georgia',serif;
+  background:#0f0f0f;
+  color:white;
+  overflow:hidden;
+}
+
+.pantalla{
+  display:none;
+  min-height:100vh;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  padding:25px;
+}
+
+.pantalla.activa{
+  display:flex;
+}
+
+button{
+  margin-top:25px;
+  padding:12px 26px;
+  font-size:16px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:white;
+}
+
+.pagina{
+  display:none;
+}
+
+.pagina.activa{
+  display:block;
+  animation:fade .6s ease;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateX(30px);}
+  to{opacity:1; transform:translateX(0);}
+}
+
+/* CORAZONES */
+.corazon{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation:flotar 6s linear infinite;
+}
+
+@keyframes flotar{
+  from{transform:translateY(0); opacity:1;}
+  to{transform:translateY(-110vh); opacity:0;}
+}
+
+/* TICKETS */
+.ticket{
+  background:rgba(255,255,255,.15);
+  padding:15px;
+  border-radius:15px;
+  margin:10px;
+}
+
+/* CARRUSEL */
+.carousel{
+  width:250px;
+  height:320px;
+  overflow:hidden;
+  border-radius:20px;
+  margin:auto;
+}
+
+.carousel img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  animation:slide 12s infinite;
+}
+
+@keyframes slide{
+  0%{opacity:1}
+  33%{opacity:0}
+  66%{opacity:1}
+}
+</style>
 </head>
+
 <body>
 
-  <div id="carta" class="pantalla activa">
-    <h2>💌 Tengo una sorpresa para ti</h2>
-    <p>Toca para continuar</p>
-    <button onclick="continuar()">Continuar 💖</button>
+<!-- MÚSICA -->
+<audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<!-- CARTA -->
+<div id="carta" class="pantalla activa">
+  <h2>💌 Tengo una sorpresa para ti</h2>
+  <p>Toca para continuar</p>
+  <button onclick="continuar()">Continuar 💖</button>
+</div>
+
+<!-- REVISTA -->
+<div id="revista" class="pantalla">
+
+  <!-- PORTADA -->
+  <div class="pagina activa">
+    <h1>NATALY</h1>
+    <p>Edición especial · San Valentín</p>
+    <button onclick="siguiente()">Abrir revista ➜</button>
   </div>
 
-  <div id="revista" class="pantalla">
-<div class="pagina activa">
-  <h1>NATALY</h1>
-  <p>Edición Especial · San Valentín</p>
-  <button onclick="siguiente()">Abrir revista ➜</button>
-</div>
-
-<div class="pagina">
-  <h2>Nuestra historia</h2>
-  <p>
-    Desde que llegaste a mi vida, la has convertido en lo mejor del mundo.
-    Quiero que esta fecha sea solo el inicio de nuestro viaje de amor.
-  </p>
-  <button onclick="siguiente()">Siguiente ➜</button>
-</div>
-
-<div class="pagina">
-  <h2>Nuestra cita 💕</h2>
-  <p>🎟️ Ticket 1 — Nuestra cita</p>
-  <p>🎟️ Ticket 2 — San Valentín</p>
-</div>
+  <!-- PAG 1 -->
+  <div class="pagina">
+    <h2>Nuestra historia</h2>
+    <p>
+      Desde que llegaste a mi vida, la has convertido en lo mejor del mundo.
+      Quiero que esta fecha sea solo el inicio de nuestro viaje de amor.
+    </p>
+    <button onclick="siguiente()">Siguiente ➜</button>
   </div>
 
-  <script src="script.js"></script>
+  <!-- PAG 2 -->
+  <div class="pagina">
+    <h2>Nosotros 💕</h2>
+    <div class="carousel">
+      <img src="foto1.jpg">
+      <img src="foto2.jpg">
+      <img src="foto3.jpg">
+    </div>
+    <button onclick="siguiente()">Siguiente ➜</button>
+  </div>
+
+  <!-- PAG 3 -->
+  <div class="pagina">
+    <h2>Lo que siento por ti</h2>
+    <p>
+      Te amo más que Snoopy a Charlie Brown, más fiel que Damon Salvatore
+      cuando ama de verdad, y mucho más de lo que puedo explicar.
+    </p>
+    <button onclick="siguiente()">Siguiente ➜</button>
+  </div>
+
+  <!-- PAG FINAL -->
+  <div class="pagina">
+    <h2>Nuestra cita 💘</h2>
+    <div class="ticket">🎟 Ticket 1 — Nuestra cita</div>
+    <div class="ticket">🎟 Ticket 2 — San Valentín</div>
+    <p>
+      Eres una de las mejores cosas que tengo en mi vida
+      y jamás quiero perderte ❤️
+    </p>
+  </div>
+
+</div>
+
+<script>
+let pagina = 0;
+
+function continuar(){
+  document.getElementById("carta").classList.remove("activa");
+  document.getElementById("revista").classList.add("activa");
+  document.getElementById("musica").play();
+}
+
+function siguiente(){
+  const paginas = document.querySelectorAll(".pagina");
+  paginas[pagina].classList.remove("activa");
+  pagina++;
+  if(paginas[pagina]){
+    paginas[pagina].classList.add("activa");
+  }
+}
+
+// corazones
+setInterval(()=>{
+  const c=document.createElement("div");
+  c.className="corazon";
+  c.style.left=Math.random()*100+"vw";
+  c.innerText="💖";
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),6000);
+},500);
+</script>
+
 </body>
 </html>
+
 
 
 
