@@ -94,4 +94,31 @@ body {
   display:none;
 }
 .carrusel img.activo { display:block; }
+/* Revista estilo magazine */
+#revista {
+  display: none; /* se muestra después de la carta */
+  padding: 20px;
+  background: #fff0f5;
+  min-height: 100vh;
+}
+
+#revista .mensaje, #revista .tickets, #revista .carrusel {
+  margin-bottom: 30px;
+}
+
+/* Distribución tipo revista */
+#revista .tickets {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#revista .carrusel {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
 
