@@ -6,11 +6,12 @@
 <title>Para Nataly 💖</title>
 
 <style>
+*{box-sizing:border-box}
 body{
   margin:0;
   font-family:'Georgia', serif;
   background:#fdecef;
-  overflow-x:hidden;
+  overflow:hidden;
 }
 
 /* CARTA */
@@ -21,21 +22,17 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  z-index:10;
+  z-index:30;
 }
 .sobre{
   background:white;
   padding:40px;
-  border-radius:20px;
+  border-radius:25px;
   text-align:center;
   box-shadow:0 20px 40px rgba(0,0,0,.3);
   animation:latido 1.5s infinite;
 }
-@keyframes latido{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.05)}
-  100%{transform:scale(1)}
-}
+@keyframes latido{50%{transform:scale(1.05)}}
 .sobre button{
   margin-top:25px;
   padding:14px 30px;
@@ -44,71 +41,110 @@ body{
   border-radius:30px;
   background:#ff4d6d;
   color:white;
-  cursor:pointer;
 }
 
 /* REVISTA */
 #revista{
   display:none;
-  max-width:900px;
-  margin:auto;
-  padding:30px;
+  height:100vh;
 }
+
+/* PAGINAS */
+.pagina{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:30px;
+  opacity:0;
+  transform:translateX(100%);
+  transition:1s;
+}
+.pagina.activa{
+  opacity:1;
+  transform:translateX(0);
+}
+.contenido{max-width:900px;width:100%}
 
 /* PORTADA */
 .portada{
   background:linear-gradient(#ff4d6d,#ff8fa3);
   color:white;
-  padding:50px 30px;
+  padding:60px 30px;
   border-radius:25px;
   text-align:center;
-  margin-bottom:40px;
 }
-.portada h1{
-  font-size:42px;
-  margin:0;
-}
-.portada p{
-  font-size:18px;
-}
+.portada h1{font-size:42px}
 
-/* TEXTO ANIMADO */
+/* TEXTO */
 .mensaje{
+  background:white;
+  padding:30px;
+  border-radius:25px;
   font-size:20px;
   line-height:1.6;
-  background:white;
-  padding:25px;
-  border-radius:20px;
-  margin-bottom:40px;
-  min-height:180px;
-}
-
-/* TICKETS */
-.tickets{
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  flex-wrap:wrap;
-  margin-bottom:40px;
-}
-.ticket{
-  background:#fff;
-  border:2px dashed #ff4d6d;
-  padding:20px;
-  border-radius:15px;
-  width:180px;
-  text-align:center;
-  font-weight:bold;
 }
 
 /* CARRUSEL */
 .carrusel img{
   width:100%;
-  border-radius:20px;
+  border-radius:25px;
   display:none;
 }
-.carrusel img.activo{
-  display:block;
+.carrusel img.activo{display:block}
+
+/* PREGUNTA */
+.pregunta{
+  background:white;
+  padding:40px;
+  border-radius:25px;
+  text-align:center;
+}
+.pregunta h2{color:#ff4d6d}
+.pregunta button{
+  margin:15px;
+  padding:15px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+}
+.si{background:#ff4d6d;color:white}
+.no{background:#ddd}
+
+/* FINAL */
+#final{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(#ff4d6d,#ff8fa3);
+  color:white;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  z-index:50;
+}
+#final h1{
+  font-size:50px;
+  animation:latido 1.5s infinite;
+}
+
+/* NAVEGACION */
+.nav{
+  position:fixed;
+  bottom:20px;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:0 30px;
+}
+.nav button{
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
 }
 
 /* CORAZONES */
@@ -119,7 +155,18 @@ body{
   animation:flotar 6s linear forwards;
 }
 @keyframes flotar{
-  to{transform:translateY(-120vh); opacity:0;}
+  to{transform:translateY(-120vh);opacity:0;}
+}
+
+/* FUEGOS */
+.fuego{
+  position:fixed;
+  font-size:25px;
+  animation:explota 1.2s ease-out forwards;
+}
+@keyframes explota{
+  from{transform:scale(0)}
+  to{transform:scale(2);opacity:0}
 }
 </style>
 </head>
@@ -130,57 +177,90 @@ body{
 <div id="carta">
   <div class="sobre">
     <h1>NATALY 💌</h1>
-    <p>Te tengo una sorpresa…</p>
-    <button onclick="abrir()">Abrir carta</button>
+    <p>Te hice algo con todo mi amor…</p>
+    <button onclick="abrir()">Abrir</button>
   </div>
 </div>
 
 <!-- REVISTA -->
 <div id="revista">
 
-  <div class="portada">
-    <h1>Nuestra Historia 💖</h1>
-    <p>Edición Especial San Valentín</p>
+  <div class="pagina activa">
+    <div class="contenido portada">
+      <h1>Nuestra Historia 💖</h1>
+      <p>Edición Especial San Valentín</p>
+    </div>
   </div>
 
-  <div class="mensaje" id="texto"></div>
-
-  <div class="tickets">
-    <div class="ticket">🎟 Nuestra cita</div>
-    <div class="ticket">🎟 Nuestro recuerdo</div>
+  <div class="pagina">
+    <div class="contenido mensaje" id="texto"></div>
   </div>
 
-  <div class="carrusel">
-    <img src="foto1.jpg" class="activo">
-    <img src="foto2.jpg">
-    <img src="foto3.jpg">
+  <div class="pagina">
+    <div class="contenido carrusel">
+      <img src="foto1.jpg" class="activo">
+      <img src="foto2.jpg">
+      <img src="foto3.jpg">
+    </div>
+  </div>
+
+  <div class="pagina">
+    <div class="contenido pregunta">
+      <h2>¿Quieres ser mi San Valentín? 💘</h2>
+      <button class="si" onclick="acepto()">SÍ 💖</button>
+      <button class="no" onclick="huir(this)">No 🙈</button>
+    </div>
   </div>
 
   <audio id="musica" src="musica.mp3" loop></audio>
+
+  <div class="nav">
+    <button onclick="prev()">⬅</button>
+    <button onclick="next()">➡</button>
+  </div>
+</div>
+
+<!-- FINAL -->
+<div id="final">
+  <h1>Te amo, Nataly 💍❤️</h1>
+  <p>Feliz San Valentín</p>
 </div>
 
 <script>
-const mensaje = `Desde que llegaste a mi vida, la has convertido en lo mejor del mundo, Nataly Nicoll.
-Quiero que esta fecha solo sea el inicio de nuestro viaje de amor.
-Te amo como perro a su dueño, Snoopy a Charlie Brown, Maluma a sus seguidores,
-y como Demon Salvatore ama y protege con intensidad lo que es suyo ❤️.
-Eres de las mejores cosas que tengo en mi vida y jamás me cansaré.
-Nunca quiero perderte.`;
+const paginas=document.querySelectorAll(".pagina");
+let actual=0;
+
+const mensaje=`Nataly, desde que llegaste a mi vida todo cambió.
+No eres parte de mi mundo, eres mi mundo.
+Prometo amarte, cuidarte y elegirte
+todos los días de mi vida ❤️`;
 
 let i=0;
 
 function abrir(){
-  document.getElementById("carta").style.display="none";
-  document.getElementById("revista").style.display="block";
-  document.getElementById("musica").play().catch(()=>{});
+  carta.style.display="none";
+  revista.style.display="block";
+  musica.play().catch(()=>{});
   escribir();
 }
 
 function escribir(){
-  if(i < mensaje.length){
-    document.getElementById("texto").innerHTML += mensaje.charAt(i);
-    i++;
+  if(i<mensaje.length){
+    texto.innerHTML+=mensaje.charAt(i++);
     setTimeout(escribir,40);
+  }
+}
+
+function next(){
+  if(actual<paginas.length-1){
+    paginas[actual].classList.remove("activa");
+    paginas[++actual].classList.add("activa");
+  }
+}
+function prev(){
+  if(actual>0){
+    paginas[actual].classList.remove("activa");
+    paginas[--actual].classList.add("activa");
   }
 }
 
@@ -202,6 +282,28 @@ setInterval(()=>{
   document.body.appendChild(c);
   setTimeout(()=>c.remove(),6000);
 },500);
+
+function huir(b){
+  b.style.position="absolute";
+  b.style.left=Math.random()*80+"%";
+  b.style.top=Math.random()*80+"%";
+}
+
+function acepto(){
+  for(let i=0;i<30;i++){
+    const f=document.createElement("div");
+    f.className="fuego";
+    f.innerHTML="🎆";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*100+"vh";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1200);
+  }
+  setTimeout(()=>{
+    revista.style.display="none";
+    final.style.display="flex";
+  },1200);
+}
 </script>
 
 </body>
