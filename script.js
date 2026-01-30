@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
   continuar.addEventListener('click', () => {
     carta.style.display = 'none';
     revista.style.display = 'block';
-    if(musica) musica.play().catch(()=>console.log("Música bloqueada, pero funciona la página"));
+    if(musica) musica.play().catch(()=>console.log("Música bloqueada"));
   });
 
-  // Carrusel
+  // Carrusel automático
   const fotos = document.querySelectorAll('.carrusel img');
   let index = 0;
   if(fotos.length>0){
@@ -42,7 +42,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   setInterval(crearCorazon,500);
 });
-
-
-
 
