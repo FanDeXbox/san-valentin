@@ -1,64 +1,209 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para Nataly 💖</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Nataly 💖</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Georgia', serif;
+  background:#fdecef;
+  overflow-x:hidden;
+}
+
+/* CARTA */
+#carta{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(#ffb6c1,#ffe4e1);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
+.sobre{
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,.3);
+  animation:latido 1.5s infinite;
+}
+@keyframes latido{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
+}
+.sobre button{
+  margin-top:25px;
+  padding:14px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  cursor:pointer;
+}
+
+/* REVISTA */
+#revista{
+  display:none;
+  max-width:900px;
+  margin:auto;
+  padding:30px;
+}
+
+/* PORTADA */
+.portada{
+  background:linear-gradient(#ff4d6d,#ff8fa3);
+  color:white;
+  padding:50px 30px;
+  border-radius:25px;
+  text-align:center;
+  margin-bottom:40px;
+}
+.portada h1{
+  font-size:42px;
+  margin:0;
+}
+.portada p{
+  font-size:18px;
+}
+
+/* TEXTO ANIMADO */
+.mensaje{
+  font-size:20px;
+  line-height:1.6;
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  margin-bottom:40px;
+  min-height:180px;
+}
+
+/* TICKETS */
+.tickets{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:40px;
+}
+.ticket{
+  background:#fff;
+  border:2px dashed #ff4d6d;
+  padding:20px;
+  border-radius:15px;
+  width:180px;
+  text-align:center;
+  font-weight:bold;
+}
+
+/* CARRUSEL */
+.carrusel img{
+  width:100%;
+  border-radius:20px;
+  display:none;
+}
+.carrusel img.activo{
+  display:block;
+}
+
+/* CORAZONES */
+.corazon{
+  position:fixed;
+  bottom:-20px;
+  font-size:22px;
+  animation:flotar 6s linear forwards;
+}
+@keyframes flotar{
+  to{transform:translateY(-120vh); opacity:0;}
+}
+</style>
 </head>
+
 <body>
 
-  <!-- Carta inicial -->
-  <div id="carta">
-    <div class="carta-inner">
-      <h1>NATALY 💖</h1>
-      <p>Te tengo una sorpresa… haz clic para continuar</p>
-      <button id="continuar">Continuar</button>
-    </div>
+<!-- CARTA -->
+<div id="carta">
+  <div class="sobre">
+    <h1>NATALY 💌</h1>
+    <p>Te tengo una sorpresa…</p>
+    <button onclick="abrir()">Abrir carta</button>
+  </div>
+</div>
+
+<!-- REVISTA -->
+<div id="revista">
+
+  <div class="portada">
+    <h1>Nuestra Historia 💖</h1>
+    <p>Edición Especial San Valentín</p>
   </div>
 
-  <!-- Revista -->
-  <div id="revista">
-    <div class="corazones"></div>
+  <div class="mensaje" id="texto"></div>
 
-    <div class="velas">
-      <div class="vela"></div>
-      <div class="vela"></div>
-      <div class="vela"></div>
-    </div>
-
-    <div class="contenido-revista">
-      <div class="mensaje">
-        <p>
-        Desde que llegaste a mi vida, la has convertido en lo mejor del mundo, Nataly Nicoll. 
-        Quiero que esta fecha solo sea el inicio de nuestro viaje de amor y solo quiero decirte que te amo mucho 
-        como Perro a su dueño, Snoopy a Charlie Brown, Maluma a sus seguidores, y como Demon Salvatore ama sus poderes y siempre protege lo que quiere ❤️, y mucho más. 
-        Eres de las mejores cosas que tengo en mi vida y jamás me cansaré, nunca quiero perderte.
-        </p>
-      </div>
-
-      <div class="tickets">
-        <div class="ticket">
-          <h2>Ticket 1</h2>
-          <p>Nuestra cita</p>
-        </div>
-        <div class="ticket">
-          <h2>Ticket 2</h2>
-          <p>Nuestro recuerdo</p>
-        </div>
-      </div>
-
-      <div class="carrusel">
-        <img src="foto1.jpg" class="activo">
-        <img src="foto2.jpg">
-        <img src="foto3.jpg">
-      </div>
-    </div>
-
-    <audio id="musica" src="musica.mp3" loop></audio>
+  <div class="tickets">
+    <div class="ticket">🎟 Nuestra cita</div>
+    <div class="ticket">🎟 Nuestro recuerdo</div>
   </div>
 
-  <script src="script.js"></script>
+  <div class="carrusel">
+    <img src="foto1.jpg" class="activo">
+    <img src="foto2.jpg">
+    <img src="foto3.jpg">
+  </div>
+
+  <audio id="musica" src="musica.mp3" loop></audio>
+</div>
+
+<script>
+const mensaje = `Desde que llegaste a mi vida, la has convertido en lo mejor del mundo, Nataly Nicoll.
+Quiero que esta fecha solo sea el inicio de nuestro viaje de amor.
+Te amo como perro a su dueño, Snoopy a Charlie Brown, Maluma a sus seguidores,
+y como Demon Salvatore ama y protege con intensidad lo que es suyo ❤️.
+Eres de las mejores cosas que tengo en mi vida y jamás me cansaré.
+Nunca quiero perderte.`;
+
+let i=0;
+
+function abrir(){
+  document.getElementById("carta").style.display="none";
+  document.getElementById("revista").style.display="block";
+  document.getElementById("musica").play().catch(()=>{});
+  escribir();
+}
+
+function escribir(){
+  if(i < mensaje.length){
+    document.getElementById("texto").innerHTML += mensaje.charAt(i);
+    i++;
+    setTimeout(escribir,40);
+  }
+}
+
+// carrusel
+let img=0;
+setInterval(()=>{
+  const fotos=document.querySelectorAll(".carrusel img");
+  fotos[img].classList.remove("activo");
+  img=(img+1)%fotos.length;
+  fotos[img].classList.add("activo");
+},3000);
+
+// corazones
+setInterval(()=>{
+  const c=document.createElement("div");
+  c.className="corazon";
+  c.innerHTML="❤️";
+  c.style.left=Math.random()*100+"vw";
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),6000);
+},500);
+</script>
+
 </body>
 </html>
 
